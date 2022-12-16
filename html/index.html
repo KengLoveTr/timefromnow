@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	
+<head>
+	<style>
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+    	-webkit-appearance: none;
+    	margin: 0;
+	}
+	</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Booking Form HTML Template</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{% static 'bootstrap-min.css' %}" />
+	<link rel="stylesheet" href="{% static 'style.css' %}"/>
+	{% csrf_token %}
+</head>
+<body>
+	<div style="background-image: url('{% static 'background.jpg' %}');" id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Time From Now</h1>
+							<p>Made by LoveTr Using Bootstrap, Python, and Django.
+							   Enter the Current Time and then Enter the Time to be
+							   Calculated. 
+							</p>
+							
+						</div>
+					</div>
+					<div class="col-md-4 col-md-pull-7">
+						<div class="booking-form">
+							<form method="POST" action="count">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Current Time</span>
+											<input name="current" class="form-control" type="time" required>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="form-group">
+											<span class="form-label">Hour</span>
+											<input name="hour" type="number" class="form-control"/>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<span class="form-label">Minute</span>
+											<input name="minute" type="number" class="form-control"/>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-btn">
+									<button name="submit" type="submit" class="submit-btn">Calculate</button>
+								</div>
+								<h2>{{ Time }}</h2>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
